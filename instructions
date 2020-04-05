@@ -1,0 +1,402 @@
+Last login: Sat Apr  4 12:31:02 on ttys003
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   314  100   314    0     0    113      0  0:00:02  0:00:02 --:--:--   113
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+Abhisheks-MacBook-Pro-2:~ abgarg$ cd /Users/abgarg/udacity_webDevelopment/Project\ 1/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS 
+Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ pip install -r requirements.txt
+Collecting pyjwt (from -r requirements.txt (line 1))
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Downloading https://files.pythonhosted.org/packages/87/8b/6a9f14b5f781697e51259d81657e6048fd31a113229cf346880bb7545565/PyJWT-1.7.1-py2.py3-none-any.whl
+Requirement already satisfied (use --upgrade to upgrade): flask in /Users/abgarg/anaconda2/lib/python2.7/site-packages (from -r requirements.txt (line 2))
+Collecting gunicorn (from -r requirements.txt (line 3))
+  Cache entry deserialization failed, entry ignored
+  Cache entry deserialization failed, entry ignored
+  Downloading https://files.pythonhosted.org/packages/69/ca/926f7cd3a2014b16870086b2d0fdc84a9e49473c68a8dff8b57f7c156f43/gunicorn-20.0.4-py2.py3-none-any.whl (77kB)
+    100% |████████████████████████████████| 81kB 1.2MB/s 
+Requirement already satisfied (use --upgrade to upgrade): pytest in /Users/abgarg/anaconda2/lib/python2.7/site-packages (from -r requirements.txt (line 4))
+Requirement already satisfied (use --upgrade to upgrade): setuptools>=3.0 in /Users/abgarg/anaconda2/lib/python2.7/site-packages/setuptools-20.3-py2.7.egg (from gunicorn->-r requirements.txt (line 3))
+Requirement already satisfied (use --upgrade to upgrade): py>=1.4.29 in /Users/abgarg/anaconda2/lib/python2.7/site-packages (from pytest->-r requirements.txt (line 4))
+Installing collected packages: pyjwt, gunicorn
+Successfully installed gunicorn-20.0.4 pyjwt-1.7.1
+You are using pip version 8.1.1, however version 20.0.2 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ 
+Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ source activate py37
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ pip install -r requirements.txt
+Requirement already satisfied: pyjwt in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from -r requirements.txt (line 1)) (1.7.1)
+Requirement already satisfied: flask in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from -r requirements.txt (line 2)) (1.0.2)
+Requirement already satisfied: gunicorn in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from -r requirements.txt (line 3)) (20.0.4)
+Requirement already satisfied: pytest in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from -r requirements.txt (line 4)) (5.2.1)
+Requirement already satisfied: click>=5.1 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from flask->-r requirements.txt (line 2)) (7.0)
+Requirement already satisfied: Jinja2>=2.10 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from flask->-r requirements.txt (line 2)) (2.10.1)
+Requirement already satisfied: Werkzeug>=0.14 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from flask->-r requirements.txt (line 2)) (0.15.2)
+Requirement already satisfied: itsdangerous>=0.24 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from flask->-r requirements.txt (line 2)) (1.1.0)
+Requirement already satisfied: setuptools>=3.0 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from gunicorn->-r requirements.txt (line 3)) (41.4.0)
+Requirement already satisfied: py>=1.5.0 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (1.8.0)
+Requirement already satisfied: packaging in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (19.2)
+Requirement already satisfied: attrs>=17.4.0 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (19.2.0)
+Requirement already satisfied: more-itertools>=4.0.0 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (7.2.0)
+Requirement already satisfied: atomicwrites>=1.0 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (1.3.0)
+Requirement already satisfied: pluggy<1.0,>=0.12 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (0.13.0)
+Requirement already satisfied: wcwidth in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (0.1.7)
+Requirement already satisfied: importlib-metadata>=0.12 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from pytest->-r requirements.txt (line 4)) (0.23)
+Requirement already satisfied: MarkupSafe>=0.23 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from Jinja2>=2.10->flask->-r requirements.txt (line 2)) (1.1.1)
+Requirement already satisfied: six in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from packaging->pytest->-r requirements.txt (line 4)) (1.12.0)
+Requirement already satisfied: pyparsing>=2.0.2 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from packaging->pytest->-r requirements.txt (line 4)) (2.4.2)
+Requirement already satisfied: zipp>=0.5 in /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages (from importlib-metadata>=0.12->pytest->-r requirements.txt (line 4)) (0.6.0)
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ export JWT_SECRET='myjwtsecret'
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ export LOG_LEVEL=DEBUG
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ python main.py
+2020-04-04 14:05:22,173 - __main__ - DEBUG - Starting with log level: DEBUG
+ * Serving Flask app "main" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+Traceback (most recent call last):
+  File "main.py", line 114, in <module>
+    APP.run(host='127.0.0.1', port=8080, debug=True)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/flask/app.py", line 943, in run
+    run_simple(host, port, self, **options)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/werkzeug/serving.py", line 988, in run_simple
+    run_with_reloader(inner, extra_files, reloader_interval, reloader_type)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/werkzeug/_reloader.py", line 332, in run_with_reloader
+    sys.exit(reloader.restart_with_reloader())
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/werkzeug/_reloader.py", line 176, in restart_with_reloader
+    exit_code = subprocess.call(args, env=new_environ, close_fds=False)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/subprocess.py", line 323, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/subprocess.py", line 775, in __init__
+    restore_signals, start_new_session)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/subprocess.py", line 1522, in _execute_child
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ python main.py
+2020-04-04 14:05:42,675 - __main__ - DEBUG - Starting with log level: DEBUG
+ * Serving Flask app "main" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+Traceback (most recent call last):
+  File "main.py", line 114, in <module>
+    APP.run(host='127.0.0.1', port=8080, debug=True)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/flask/app.py", line 943, in run
+    run_simple(host, port, self, **options)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/werkzeug/serving.py", line 988, in run_simple
+    run_with_reloader(inner, extra_files, reloader_interval, reloader_type)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/werkzeug/_reloader.py", line 332, in run_with_reloader
+    sys.exit(reloader.restart_with_reloader())
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/werkzeug/_reloader.py", line 176, in restart_with_reloader
+    exit_code = subprocess.call(args, env=new_environ, close_fds=False)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/subprocess.py", line 323, in call
+    with Popen(*popenargs, **kwargs) as p:
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/subprocess.py", line 775, in __init__
+    restore_signals, start_new_session)
+  File "/Users/abgarg/anaconda2/envs/py37/lib/python3.7/subprocess.py", line 1522, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+OSError: [Errno 8] Exec format error: '/Users/abgarg/udacity_webDevelopment/Project 1/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS/main.py'
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ chmod 644 main.py
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ python main.py
+2020-04-04 14:07:56,037 - __main__ - DEBUG - Starting with log level: DEBUG
+ * Serving Flask app "main" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on http://127.0.0.1:8080/ (Press CTRL+C to quit)
+ * Restarting with stat
+2020-04-04 14:07:56,218 - __main__ - DEBUG - Starting with log level: DEBUG
+ * Debugger is active!
+ * Debugger PIN: 628-097-424
+127.0.0.1 - - [04/Apr/2020 14:09:08] "POST /auth HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2020 14:09:38] "GET /contents HTTP/1.1" 401 -
+127.0.0.1 - - [04/Apr/2020 14:09:45] "GET /contents HTTP/1.1" 401 -
+127.0.0.1 - - [04/Apr/2020 14:09:49] "POST /auth HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2020 14:10:06] "GET /contents HTTP/1.1" 401 -
+127.0.0.1 - - [04/Apr/2020 14:10:16] "GET /contents HTTP/1.1" 401 -
+127.0.0.1 - - [04/Apr/2020 14:10:26] "POST /auth HTTP/1.1" 200 -
+127.0.0.1 - - [04/Apr/2020 14:10:40] "GET /contents HTTP/1.1" 200 -
+^C(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ docker build -t test .
+Sending build context to Docker daemon  78.85kB
+Step 1/7 : FROM python:stretch
+ ---> b9d77e48a75c
+Step 2/7 : COPY . /app
+ ---> 02c2835ac4c5
+Step 3/7 : WORKDIR /app
+ ---> Running in 610b3a7f2ae0
+Removing intermediate container 610b3a7f2ae0
+ ---> 7c2ace2a502b
+Step 4/7 : RUN pip install --upgrade pip
+ ---> Running in 6237b79f939d
+Collecting pip
+  Downloading https://files.pythonhosted.org/packages/54/0c/d01aa759fdc501a58f431eb594a17495f15b88da142ce14b5845662c13f3/pip-20.0.2-py2.py3-none-any.whl (1.4MB)
+Installing collected packages: pip
+  Found existing installation: pip 19.2.3
+    Uninstalling pip-19.2.3:
+      Successfully uninstalled pip-19.2.3
+Successfully installed pip-20.0.2
+Removing intermediate container 6237b79f939d
+ ---> 6559e9f15a16
+Step 5/7 : RUN pip install -r requirements.txt
+ ---> Running in 01519b50f6a3
+Collecting pyjwt
+  Downloading PyJWT-1.7.1-py2.py3-none-any.whl (18 kB)
+Collecting flask
+  Downloading Flask-1.1.2-py2.py3-none-any.whl (94 kB)
+Collecting gunicorn
+  Downloading gunicorn-20.0.4-py2.py3-none-any.whl (77 kB)
+Collecting pytest
+  Downloading pytest-5.4.1-py3-none-any.whl (246 kB)
+Collecting Werkzeug>=0.15
+  Downloading Werkzeug-1.0.1-py2.py3-none-any.whl (298 kB)
+Collecting Jinja2>=2.10.1
+  Downloading Jinja2-2.11.1-py2.py3-none-any.whl (126 kB)
+Collecting click>=5.1
+  Downloading click-7.1.1-py2.py3-none-any.whl (82 kB)
+Collecting itsdangerous>=0.24
+  Downloading itsdangerous-1.1.0-py2.py3-none-any.whl (16 kB)
+Requirement already satisfied: setuptools>=3.0 in /usr/local/lib/python3.7/site-packages (from gunicorn->-r requirements.txt (line 3)) (41.2.0)
+Collecting pluggy<1.0,>=0.12
+  Downloading pluggy-0.13.1-py2.py3-none-any.whl (18 kB)
+Collecting more-itertools>=4.0.0
+  Downloading more_itertools-8.2.0-py3-none-any.whl (43 kB)
+Collecting attrs>=17.4.0
+  Downloading attrs-19.3.0-py2.py3-none-any.whl (39 kB)
+Collecting wcwidth
+  Downloading wcwidth-0.1.9-py2.py3-none-any.whl (19 kB)
+Collecting importlib-metadata>=0.12; python_version < "3.8"
+  Downloading importlib_metadata-1.6.0-py2.py3-none-any.whl (30 kB)
+Collecting py>=1.5.0
+  Downloading py-1.8.1-py2.py3-none-any.whl (83 kB)
+Collecting packaging
+  Downloading packaging-20.3-py2.py3-none-any.whl (37 kB)
+Collecting MarkupSafe>=0.23
+  Downloading MarkupSafe-1.1.1-cp37-cp37m-manylinux1_x86_64.whl (27 kB)
+Collecting zipp>=0.5
+  Downloading zipp-3.1.0-py3-none-any.whl (4.9 kB)
+Collecting pyparsing>=2.0.2
+  Downloading pyparsing-2.4.6-py2.py3-none-any.whl (67 kB)
+Collecting six
+  Downloading six-1.14.0-py2.py3-none-any.whl (10 kB)
+Installing collected packages: pyjwt, Werkzeug, MarkupSafe, Jinja2, click, itsdangerous, flask, gunicorn, zipp, importlib-metadata, pluggy, more-itertools, attrs, wcwidth, py, pyparsing, six, packaging, pytest
+Successfully installed Jinja2-2.11.1 MarkupSafe-1.1.1 Werkzeug-1.0.1 attrs-19.3.0 click-7.1.1 flask-1.1.2 gunicorn-20.0.4 importlib-metadata-1.6.0 itsdangerous-1.1.0 more-itertools-8.2.0 packaging-20.3 pluggy-0.13.1 py-1.8.1 pyjwt-1.7.1 pyparsing-2.4.6 pytest-5.4.1 six-1.14.0 wcwidth-0.1.9 zipp-3.1.0
+Removing intermediate container 01519b50f6a3
+ ---> 41570ced63c8
+Step 6/7 : EXPOSE 8080
+ ---> Running in 65d981d6a534
+Removing intermediate container 65d981d6a534
+ ---> e88db0424c03
+Step 7/7 : ENTRYPOINT ["gunicorn", "-b", "0.0.0.0:8080", "main:APP"]
+ ---> Running in f3549bc9ee18
+Removing intermediate container f3549bc9ee18
+ ---> 59d1b553dda3
+Successfully built 59d1b553dda3
+Successfully tagged test:latest
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ docker run  -p 80:8080 test --env-file=env_file
+docker: Error response from daemon: driver failed programming external connectivity on endpoint happy_black (cad088f67154bdc07284ec0fc72eef1a3af286ce00c6b7691b59c19a51898602): Bind for 0.0.0.0:80 failed: port is already allocated.
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ docker run  -p 80:8080 --env-file=env_file test
+docker: Error response from daemon: driver failed programming external connectivity on endpoint hungry_wilson (f9a5cac4eba1d0d9bb6261abe098d139b35e01cd96099a230302819c0a800ac8): Bind for 0.0.0.0:80 failed: port is already allocated.
+ERRO[0000] error waiting for container: context canceled 
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ docker run  -p 50:8080 --env-file=env_file test
+[2020-04-04 08:51:58 +0000] [1] [INFO] Starting gunicorn 20.0.4
+[2020-04-04 08:51:58 +0000] [1] [INFO] Listening at: http://0.0.0.0:8080 (1)
+[2020-04-04 08:51:58 +0000] [1] [INFO] Using worker: sync
+[2020-04-04 08:51:58 +0000] [9] [INFO] Booting worker with pid: 9
+2020-04-04 08:51:58,901 - main - DEBUG - Starting with log level: DEBUG
+^C[2020-04-04 08:52:23 +0000] [1] [INFO] Handling signal: int
+[2020-04-04 08:52:23 +0000] [9] [INFO] Worker exiting (pid: 9)
+[2020-04-04 08:52:23 +0000] [1] [INFO] Shutting down: Master
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws configure
+AWS Access Key ID [****************XP4Z]: AKIAVD4BGY5XERKZW6VL
+AWS Secret Access Key [****************3wi8]: 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
+Default region name [us-east-1]: 
+Default output format [None]: 
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws configure list
+      Name                    Value             Type    Location
+      ----                    -----             ----    --------
+   profile                <not set>             None    None
+access_key     ****************W6VL shared-credentials-file    
+secret_key     ****************bKXg shared-credentials-file    
+    region                us-east-1      config-file    ~/.aws/config
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws s3 ls
+2020-04-04 12:38:56 cf-templates-6m4qi0bq4y5m-us-east-1
+2020-04-02 18:36:06 cf-templates-6m4qi0bq4y5m-us-east-2
+2020-04-04 13:19:29 simple-jwt-api-codepipelineartifactbucket-m8rmqbxylham
+2020-04-04 12:44:42 udacity-course-codepipelineartifactbucket-1aauy80jk6fui
+2020-04-02 18:43:08 udacity-course-codepipelineartifactbucket-9wg2dv6k73us
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws s3 ls
+2020-04-04 12:38:56 cf-templates-6m4qi0bq4y5m-us-east-1
+2020-04-02 18:36:06 cf-templates-6m4qi0bq4y5m-us-east-2
+2020-04-04 13:19:29 simple-jwt-api-codepipelineartifactbucket-m8rmqbxylham
+2020-04-04 12:44:42 udacity-course-codepipelineartifactbucket-1aauy80jk6fui
+2020-04-02 18:43:08 udacity-course-codepipelineartifactbucket-9wg2dv6k73us
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ eksctl create cluster simple-jwt-api
+[ℹ]  eksctl version 0.16.0
+[ℹ]  using region us-east-1
+[ℹ]  setting availability zones to [us-east-1f us-east-1b]
+[ℹ]  subnets for us-east-1f - public:192.168.0.0/19 private:192.168.64.0/19
+[ℹ]  subnets for us-east-1b - public:192.168.32.0/19 private:192.168.96.0/19
+[ℹ]  nodegroup "ng-263a8542" will use "ami-0d373fa5015bc43be" [AmazonLinux2/1.14]
+[ℹ]  using Kubernetes version 1.14
+[ℹ]  creating EKS cluster "simple-jwt-api" in "us-east-1" region with un-managed nodes
+[ℹ]  will create 2 separate CloudFormation stacks for cluster itself and the initial nodegroup
+[ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-1 --cluster=simple-jwt-api'
+[ℹ]  CloudWatch logging will not be enabled for cluster "simple-jwt-api" in "us-east-1"
+[ℹ]  you can enable it with 'eksctl utils update-cluster-logging --region=us-east-1 --cluster=simple-jwt-api'
+[ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "simple-jwt-api" in "us-east-1"
+[ℹ]  2 sequential tasks: { create cluster control plane "simple-jwt-api", create nodegroup "ng-263a8542" }
+[ℹ]  building cluster stack "eksctl-simple-jwt-api-cluster"
+[ℹ]  deploying stack "eksctl-simple-jwt-api-cluster"
+[!]  retryable error (RequestError: send request failed
+caused by: Post https://cloudformation.us-east-1.amazonaws.com/: dial tcp 54.239.29.24:443: i/o timeout) from cloudformation/DescribeStacks - will retry after delay of 32.763818ms
+[ℹ]  building nodegroup stack "eksctl-simple-jwt-api-nodegroup-ng-263a8542"
+[ℹ]  --nodes-min=2 was set automatically for nodegroup ng-263a8542
+[ℹ]  --nodes-max=2 was set automatically for nodegroup ng-263a8542
+[ℹ]  deploying stack "eksctl-simple-jwt-api-nodegroup-ng-263a8542"
+[✔]  all EKS cluster resources for "simple-jwt-api" have been created
+[✔]  saved kubeconfig as "/Users/abgarg/.kube/config"
+[ℹ]  adding identity "arn:aws:iam::351921424238:role/eksctl-simple-jwt-api-nodegroup-n-NodeInstanceRole-1VKJOXWUV6JI8" to auth ConfigMap
+[ℹ]  nodegroup "ng-263a8542" has 0 node(s)
+[ℹ]  waiting for at least 2 node(s) to become ready in "ng-263a8542"
+[ℹ]  nodegroup "ng-263a8542" has 2 node(s)
+[ℹ]  node "ip-192-168-22-178.ec2.internal" is ready
+[ℹ]  node "ip-192-168-54-83.ec2.internal" is ready
+[ℹ]  kubectl command should work with "/Users/abgarg/.kube/config", try 'kubectl get nodes'
+[✔]  EKS cluster "simple-jwt-api" in "us-east-1" region is ready
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws iam create-role --role-name UdacityFlaskDeployCBKubectlRole --assume-role-policy-document "$TRUST" --output text --query 'Role.Arn'
+
+Parameter validation failed:
+Invalid length for parameter AssumeRolePolicyDocument, value: 0, valid range: 1-inf
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ TRUST="{ \"Version\": \"2012-10-17\", \"Statement\": [ { \"Effect\": \"Allow\", \"Principal\": { \"AWS\": \"arn:aws:iam::${ACCOUNT_ID}:root\" }, \"Action\": \"sts:AssumeRole\" } ] }"
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws iam create-role --role-name UdacityFlaskDeployCBKubectlRole --assume-role-policy-document "$TRUST" --output text --query 'Role.Arn'
+arn:aws:iam::351921424238:role/UdacityFlaskDeployCBKubectlRole
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ echo '{ "Version": "2012-10-17", "Statement": [ { "Effect": "Allow", "Action": [ "eks:Describe*", "ssm:GetParameters" ], "Resource": "*" } ] }' > /tmp/iam-role-policy 
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws iam put-role-policy --role-name UdacityFlaskDeployCBKubectlRole --policy-name eks-describe --policy-document file:///tmp/iam-role-policy
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ kubectl get -n kube-system configmap/aws-auth -o yaml > /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ vim  /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ vim  /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ vim  /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ vim  /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ kubectl patch configmap/aws-auth -n kube-system --patch "$(cat /tmp/aws-auth-patch.yml)"
+configmap/aws-auth patched
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ aws ssm put-parameter --name JWT_SECRET --value "myjwtsecret" --type SecureString
+
+An error occurred (ParameterAlreadyExists) when calling the PutParameter operation: The parameter already exists. To overwrite this value, set the overwrite option in the request to true.
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ kubectl get -n kube-system configmap/aws-auth -o yaml > /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ vim  /tmp/aws-auth-patch.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ kubectl get services simple-jwt-api -o wide
+NAME             TYPE           CLUSTER-IP      EXTERNAL-IP                                                               PORT(S)        AGE   SELECTOR
+simple-jwt-api   LoadBalancer   10.100.254.97   aa419b152765911ea97fe16531fb0662-1681720369.us-east-1.elb.amazonaws.com   80:32615/TCP   30s   app=simple-jwt-api
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ export TOKEN=`curl -d '{"email”:”abc”,”password”:”pwd”}’ -H "Content-Type: application/json" -X POST aa419b152765911ea97fe16531fb0662-1681720369.us-east-1.elb.amazonaws.com/auth  | jq -r '.token'`
+-bash: command substitution: line 1: unexpected EOF while looking for matching `''
+-bash: command substitution: line 2: syntax error: unexpected end of file
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ pytest test_main.py 
+============================================================================================================ test session starts =============================================================================================================
+platform darwin -- Python 3.7.4, pytest-5.2.1, py-1.8.0, pluggy-0.13.0
+rootdir: /Users/abgarg/udacity_webDevelopment/Project 1/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS
+plugins: arraydiff-0.3, remotedata-0.3.2, doctestplus-0.4.0, openfiles-0.4.0
+collected 2 items                                                                                                                                                                                                                            
+
+test_main.py .F                                                                                                                                                                                                                        [100%]
+
+================================================================================================================== FAILURES ==================================================================================================================
+_________________________________________________________________________________________________________________ test_auth __________________________________________________________________________________________________________________
+
+client = <FlaskClient <Flask 'main'>>
+
+    def test_auth(client):
+        body = {'email': EMAIL,
+                'password': PASSWORD}
+        response = client.post('/auth',
+                               data=json.dumps(body),
+                               content_type='application/json')
+    
+        assert response.status_code == 200
+        token = response.json['token']
+        assert token is not None
+>       assert False
+E       assert False
+
+test_main.py:41: AssertionError
+============================================================================================================== warnings summary ==============================================================================================================
+/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/utils.py:485
+  /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/utils.py:485: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    from collections import MutableMapping
+
+/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/runtime.py:318
+  /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/runtime.py:318: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    from collections import Mapping
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+================================================================================================== 1 failed, 1 passed, 2 warnings in 0.39s ===================================================================================================
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ pytest test_main.py 
+============================================================================================================ test session starts =============================================================================================================
+platform darwin -- Python 3.7.4, pytest-5.2.1, py-1.8.0, pluggy-0.13.0
+rootdir: /Users/abgarg/udacity_webDevelopment/Project 1/FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS
+plugins: arraydiff-0.3, remotedata-0.3.2, doctestplus-0.4.0, openfiles-0.4.0
+collected 2 items                                                                                                                                                                                                                            
+
+test_main.py .F                                                                                                                                                                                                                        [100%]
+
+================================================================================================================== FAILURES ==================================================================================================================
+_________________________________________________________________________________________________________________ test_auth __________________________________________________________________________________________________________________
+
+client = <FlaskClient <Flask 'main'>>
+
+    def test_auth(client):
+        body = {'email': EMAIL,
+                'password': PASSWORD}
+        response = client.post('/auth',
+                               data=json.dumps(body),
+                               content_type='application/json')
+    
+        assert response.status_code == 200
+        token = response.json['token']
+        assert token is not None
+>       assert False
+E       assert False
+
+test_main.py:41: AssertionError
+============================================================================================================== warnings summary ==============================================================================================================
+/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/utils.py:485
+  /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/utils.py:485: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    from collections import MutableMapping
+
+/Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/runtime.py:318
+  /Users/abgarg/anaconda2/envs/py37/lib/python3.7/site-packages/jinja2/runtime.py:318: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated, and in 3.8 it will stop working
+    from collections import Mapping
+
+-- Docs: https://docs.pytest.org/en/latest/warnings.html
+================================================================================================== 1 failed, 1 passed, 2 warnings in 0.34s ===================================================================================================
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ ls
+Dockerfile			__pycache__			ci-cd-codepipeline.cfn.yml	examples			requirements.txt		test_main.py
+README.md			buildspec.yml			env_file			main.py				simple_jwt_api.yml
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ ls -al
+total 96
+drwxr-xr-x  16 abgarg  staff    512 Apr  4 16:29 .
+drwxr-xr-x   6 abgarg  staff    192 Apr  4 14:03 ..
+drwxr-xr-x  12 abgarg  staff    384 Apr  4 16:29 .git
+-rw-r--r--   1 abgarg  staff    236 Apr  4 14:03 .gitignore
+drwxr-xr-x   6 abgarg  staff    192 Apr  4 15:53 .pytest_cache
+-rwxr-xr-x@  1 abgarg  staff    184 Apr  4 14:19 Dockerfile
+-rwxr-xr-x   1 abgarg  staff   2367 Apr  4 15:24 README.md
+drwxr-xr-x   4 abgarg  staff    128 Apr  4 16:26 __pycache__
+-rw-r--r--   1 abgarg  staff   2238 Apr  4 16:20 buildspec.yml
+-rwxr-xr-x   1 abgarg  staff  11899 Apr  4 15:12 ci-cd-codepipeline.cfn.yml
+-rwxr-xr-x@  1 abgarg  staff     38 Feb 19 19:02 env_file
+drwxr-xr-x   4 abgarg  staff    128 Apr  4 14:03 examples
+-rw-r--r--   1 abgarg  staff   2994 Apr  4 14:03 main.py
+-rwxr-xr-x   1 abgarg  staff     28 Apr  4 15:32 requirements.txt
+-rw-r--r--   1 abgarg  staff    772 Apr  4 14:03 simple_jwt_api.yml
+-rw-r--r--   1 abgarg  staff    965 Apr  4 16:29 test_main.py
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ vim .gitignore 
+(py37) Abhisheks-MacBook-Pro-2:FSND-Deploy-Flask-App-to-Kubernetes-Using-EKS abgarg$ 
